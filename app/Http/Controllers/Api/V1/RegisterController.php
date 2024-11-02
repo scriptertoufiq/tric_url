@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\Api\V1\UserResource;
 use App\Services\Api\V1\RegisterService;
 use Illuminate\Http\Request;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -24,15 +25,14 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request, RegisterService $registerService)
     {
         try {
-            $user = new UserResource($registerService->store($request->validated()));
-        } catch (\Exception $exception) {
+            return response()->json([
+                'status' => 'success',
+                'message' => "Registered Successfully",
+                'user' => new UserResource($registerService->store($request)),
+            ],200);
+        } catch (Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], 422);
         }
-        return response()->json([
-            'status' => 'success',
-            'message' => "Registered Successfully",
-            'user' => $user,
-        ],200);
     }
 
 
