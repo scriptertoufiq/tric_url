@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\LinkController;
 use App\Http\Controllers\Api\V1\RegisterController;
 use App\Http\Controllers\Api\V1\LoginController;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ Route::post('login', [LoginController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [LoginController::class, 'logout']);
+    Route::apiResource('links', LinkController::class);
 });
 
 
