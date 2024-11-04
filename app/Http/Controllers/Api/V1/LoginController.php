@@ -26,4 +26,12 @@ class LoginController extends Controller
             return response()->json(['error' => $exception->getMessage()], 422);
         }
     }
+
+
+    public function logout(){
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'success' => 'Successfully logged out',
+        ]);
+    }
 }
