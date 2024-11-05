@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkRequest;
+use App\Services\Api\V1\LinkService;
 use Illuminate\Http\Request;
 
 class LinkController extends Controller
@@ -19,9 +20,11 @@ class LinkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LinkRequest $request)
+    public function store(LinkRequest $request,LinkService $linkService)
     {
-        return "yes";
+       $validatedData = $request->validate();
+
+       $linkService->insert($request);
     }
 
     /**

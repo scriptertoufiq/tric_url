@@ -22,10 +22,10 @@ class LinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'name' => 'required|max:50',
-            // 'email' => 'required|email|unique:users,email',
-            // 'password' => 'required|min:6',
-            // 'password_confirmation' => 'required_with:password|same:password|min:6',
+            'categories_id' => 'required',
+            'target_url' => 'required|unique:links,target_url',
+            'sort_url' => 'required|unique:links,sort_url',
+            'redirect_type' => 'required|in:301,302,307,cloaked',
         ];
     }
 }
