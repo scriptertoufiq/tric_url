@@ -22,9 +22,7 @@ class LinkController extends Controller
      */
     public function store(LinkRequest $request,LinkService $linkService)
     {
-       $validatedData = $request->validate();
-
-       $linkService->insert($request);
+       return $linkService->insert($request);
     }
 
     /**

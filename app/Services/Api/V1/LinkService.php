@@ -13,6 +13,6 @@ class LinkService
     }
 
     public function insert($data){
-        return $data;
+        return "yes";
     }
 }
