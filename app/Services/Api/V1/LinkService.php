@@ -9,10 +9,11 @@ class LinkService
      */
     public function __construct()
     {
-        //
+
+
     }
 
     public function insert($data){
-        return "yes";
+        return "yesss";
     }
 }
